@@ -5,17 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login</title>
   <link rel="stylesheet" href="style.css">
-  <script type="module" src="firebase.js"></script>
-  <script defer src="script.js"></script>
 </head>
 <body>
   <div class="container">
     <h2>Login</h2>
     <input type="email" id="email" placeholder="Email">
     <input type="password" id="password" placeholder="Password">
-    <button onclick="loginWithEmail()">Login</button>
-    <button onclick="loginWithGoogle()">Login with Google</button>
+    <button id="login-btn">Login</button>
+    <button id="google-btn">Login with Google</button>
     <p>Don't have an account? <a href="signup.html">Sign up</a></p>
   </div>
+
+  <script type="module" src="firebase.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
