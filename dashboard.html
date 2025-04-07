@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="firebase.js"></script>
+  <script defer src="tracking.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h2>Bus Tracker Dashboard</h2>
+    <div id="gps-data">
+      <p>Latitude: <span id="latitude">--</span></p>
+      <p>Longitude: <span id="longitude">--</span></p>
+      <p>Speed: <span id="speed">--</span> km/h</p>
+      <p>EPS: <span id="eps">--</span></p>
+    </div>
+    <button onclick="logout()">Logout</button>
+  </div>
+</body>
+</html>
