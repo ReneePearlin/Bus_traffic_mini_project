@@ -17,13 +17,13 @@ import {
 
 // ✅ Replace with your actual config values
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID",
-  databaseURL: "YOUR_DATABASE_URL"
+  apiKey: "AIzaSyATTUPboq4w0nwxubk5e5tL9ujOiSx03aU",
+  authDomain: "trackmyride-5524a.firebaseapp.com",
+  projectId: "trackmyride-5524a",
+  storageBucket: "trackmyride-5524a.firebasestorage.app",
+  messagingSenderId: "275723082314",
+  appId: "1:275723082314:web:54b9c80fecba4e414b24b3",
+  measurementId: "G-9P4N8QVMTE"
 };
 
 // Initialize Firebase
