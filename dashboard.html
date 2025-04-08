@@ -4,43 +4,24 @@
   <meta charset="UTF-8">
   <title>Bus Tracker Dashboard</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY" defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY"></script>
 </head>
 <body>
   <div class="sidebar">
     <h2>Fleet Dashboard</h2>
     <ul>
-      <li>Live Locations</li>
-      <li>Past Routes</li>
-      <li>Notifications</li>
-      <li><button id="logoutBtn">Logout</button></li>
+      <li onclick="showLive()">Live Locations</li>
+      <li onclick="showPast()">Past Routes</li>
+      <li onclick="showNotifications()">Notifications</li>
+      <li><button onclick="logout()">Logout</button></li>
     </ul>
   </div>
-
   <div class="main-content">
     <div id="map"></div>
   </div>
 
-  <!-- Include Firebase and other scripts -->
   <script type="module" src="firebase.js"></script>
   <script type="module" src="tracking.js"></script>
   <script type="module" src="map.js"></script>
-
-  <!-- ✅ Logout handler script -->
-  <script type="module">
-    import { auth, signOut } from './firebase.js';
-
-    const logoutBtn = document.getElementById('logoutBtn');
-
-    logoutBtn.addEventListener('click', () => {
-      signOut(auth).then(() => {
-        // ✅ Redirect to login page after successful logout
-        window.location.href = 'login.html';
-      }).catch((error) => {
-        console.error("Logout error:", error);
-        alert("Logout failed. Try again.");
-      });
-    });
-  </script>
 </body>
 </html>
