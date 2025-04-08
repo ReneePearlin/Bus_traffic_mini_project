@@ -1,124 +1,71 @@
-/* Global Reset */
-* {
+body, html {
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+  height: 100%;
+  background: linear-gradient(to right, #83a4d4, #b6fbff);
 }
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to right, #00c6ff, #0072ff);
-  color: white;
-  min-height: 100vh;
+.auth-page {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-/* Container for login/signup forms */
-.container {
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 2.5rem;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-  width: 90%;
-  max-width: 400px;
+.auth-container {
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
   text-align: center;
 }
 
-h2 {
-  margin-bottom: 1.5rem;
-  font-size: 1.8rem;
+.auth-container input {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  width: 80%;
 }
 
-/* Input Fields */
-input {
-  width: 100%;
-  padding: 12px;
-  margin: 0.5rem 0;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-}
-
-/* Buttons */
-button {
-  width: 100%;
-  padding: 12px;
-  margin-top: 1rem;
-  background-color: #28a745;
+.auth-container button {
+  padding: 10px 20px;
+  margin: 10px;
+  background: #4CAF50;
   color: white;
   border: none;
-  font-size: 1rem;
-  font-weight: bold;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-button:hover {
-  background-color: #218838;
-}
-
-/* Link Styling */
-a {
-  color: #00f0ff;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* Sidebar Styling for Dashboard */
 .sidebar {
   position: fixed;
-  top: 0;
   left: 0;
+  top: 0;
   width: 220px;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.85);
+  background: #333;
+  color: white;
   padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.sidebar h2 {
-  color: #00c6ff;
-  margin-bottom: 1rem;
 }
 
 .sidebar ul {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
 }
 
-.sidebar li {
-  margin: 10px 0;
-  color: #fff;
+.sidebar ul li {
+  margin: 20px 0;
   cursor: pointer;
-  transition: 0.3s;
 }
 
-.sidebar li:hover {
-  color: #00c6ff;
-  transform: translateX(5px);
-}
-
-/* Main Dashboard Content */
 .main-content {
-  margin-left: 240px;
+  margin-left: 220px;
   padding: 20px;
-  flex-grow: 1;
-  width: calc(100% - 240px);
+  height: 100vh;
 }
 
-/* Google Map Style */
 #map {
+  height: 100%;
   width: 100%;
-  height: 100vh;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
 }
