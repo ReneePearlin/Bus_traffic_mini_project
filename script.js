@@ -3,38 +3,33 @@ import {
   provider,
   signInWithPopup,
   signInWithEmailAndPassword,
-  createUserWithEmailAndPassword
+  createUserWithEmailAndPassword,
+  signOut
 } from './firebase.js';
 
-// Login with email/password
-window.loginUser = function() {
+// Email login
+window.login = function () {
   const email = document.getElementById('loginEmail').value;
   const password = document.getElementById('loginPassword').value;
 
   signInWithEmailAndPassword(auth, email, password)
-    .then(() => {
-      window.location.href = 'dashboard.html';
-    })
-    .catch(error => alert("Login error: " + error.message));
-}
+    .then(() => window.location.href = 'dashboard.html')
+    .catch(err => alert("Login error: " + err.message));
+};
 
-// Google Sign-In
-window.googleLogin = function() {
+// Google login
+window.loginWithGoogle = function () {
   signInWithPopup(auth, provider)
-    .then(() => {
-      window.location.href = 'dashboard.html';
-    })
-    .catch(error => alert("Google login failed: " + error.message));
-}
+    .then(() => window.location.href = 'dashboard.html')
+    .catch(err => alert("Google login failed: " + err.message));
+};
 
-// Sign up
-window.signupUser = function() {
+// Signup
+window.signUp = function () {
   const email = document.getElementById('signupEmail').value;
   const password = document.getElementById('signupPassword').value;
 
   createUserWithEmailAndPassword(auth, email, password)
-    .then(() => {
-      window.location.href = 'dashboard.html';
-    })
-    .catch(error => alert("Signup error: " + error.message));
-}
+    .then(() => window.location.href = 'dashboard.html')
+    .catch(err => alert("Signup error: " + err.message));
+};
