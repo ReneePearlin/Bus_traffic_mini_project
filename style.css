@@ -1,44 +1,88 @@
+/* style.css */
 body {
   margin: 0;
-  padding: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(120deg, #6a11cb, #2575fc);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #56ccf2, #2f80ed);
+  color: #333;
 }
 
-.container {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 2rem;
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
+.login-container {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 2em;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-  color: white;
 }
 
-input {
+.login-container input,
+.login-container button {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
-  border: none;
   border-radius: 5px;
 }
 
-button {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  background-color: #ffffff;
-  color: #2575fc;
+.login-container input {
+  border: 1px solid #ddd;
+}
+
+.login-container button {
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  background-color: #2f80ed;
+  color: white;
   font-weight: bold;
+  cursor: pointer;
 }
 
-button:hover {
-  background-color: #ddd;
+.login-container button:hover {
+  background-color: #1c60c2;
+}
+
+.sidebar {
+  position: fixed;
+  width: 200px;
+  height: 100vh;
+  background: #2f80ed;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  text-align: center;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+}
+
+.sidebar ul li a,
+.sidebar ul li button {
+  color: white;
+  text-decoration: none;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+.main-content {
+  margin-left: 220px;
+  padding: 20px;
+}
+
+#map, #fleet-map {
+  height: 300px;
+  width: 100%;
+  margin: 10px 0;
+  background-color: #e0e0e0;
+  border-radius: 10px;
 }
