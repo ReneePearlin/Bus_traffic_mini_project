@@ -1,32 +1,40 @@
 import {
   auth,
-  signInWithEmailAndPassword,
+  provider,
   signInWithPopup,
-  provider
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword
 } from './firebase.js';
 
-document.addEventListener('DOMContentLoaded', () => {
-  const loginBtn = document.getElementById('login-btn');
-  const googleBtn = document.getElementById('google-btn');
+// Login with email/password
+window.loginUser = function() {
+  const email = document.getElementById('loginEmail').value;
+  const password = document.getElementById('loginPassword').value;
 
-  if (loginBtn) {
-    loginBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
+  signInWithEmailAndPassword(auth, email, password)
+    .then(() => {
+      window.location.href = 'dashboard.html';
+    })
+    .catch(error => alert("Login error: " + error.message));
+}
 
-      signInWithEmailAndPassword(auth, email, password)
-        .then(() => window.location.href = "dashboard.html")
-        .catch(err => alert("Login Error: " + err.message));
-    });
-  }
+// Google Sign-In
+window.googleLogin = function() {
+  signInWithPopup(auth, provider)
+    .then(() => {
+      window.location.href = 'dashboard.html';
+    })
+    .catch(error => alert("Google login failed: " + error.message));
+}
 
-  if (googleBtn) {
-    googleBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      signInWithPopup(auth, provider)
-        .then(() => window.location.href = "dashboard.html")
-        .catch(err => alert("Google Sign-In Error: " + err.message));
-    });
-  }
-});
+// Sign up
+window.signupUser = function() {
+  const email = document.getElementById('signupEmail').value;
+  const password = document.getElementById('signupPassword').value;
+
+  createUserWithEmailAndPassword(auth, email, password)
+    .then(() => {
+      window.location.href = 'dashboard.html';
+    })
+    .catch(error => alert("Signup error: " + error.message));
+}
