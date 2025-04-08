@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Bus Tracker Dashboard</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_ACTUAL_API_KEY" defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY" defer></script>
 </head>
 <body>
   <div class="sidebar">
@@ -21,8 +21,12 @@
     <div id="map"></div>
   </div>
 
+  <!-- Include Firebase and other scripts -->
   <script type="module" src="firebase.js"></script>
   <script type="module" src="tracking.js"></script>
+  <script type="module" src="map.js"></script>
+
+  <!-- ✅ Logout handler script -->
   <script type="module">
     import { auth, signOut } from './firebase.js';
 
@@ -30,10 +34,11 @@
 
     logoutBtn.addEventListener('click', () => {
       signOut(auth).then(() => {
-        // 👇 Redirect to login page
-        window.location.href = 'login.html'; 
+        // ✅ Redirect to login page after successful logout
+        window.location.href = 'login.html';
       }).catch((error) => {
         console.error("Logout error:", error);
+        alert("Logout failed. Try again.");
       });
     });
   </script>
