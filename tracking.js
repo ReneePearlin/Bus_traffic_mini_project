@@ -1,17 +1,20 @@
 import { db, ref, onValue } from './firebase.js';
 
-const buses = {};
-window.showLive = () => alert("Live tracking is on.");
-window.showPast = () => alert("Displaying past routes.");
-window.showNotifications = () => alert("Notifications panel.");
-
-function fetchBusData() {
-  const busesRef = ref(db, 'buses');
-  onValue(busesRef, (snapshot) => {
-    const data = snapshot.val();
-    if (data) {
-      window.renderBusesOnMap(data);
-    }
-  });
+function updateMap(busId, position) {
+  const event = new CustomEvent('busLocationUpdate', { detail: { busId, position } });
+  window.dispatchEvent(event);
 }
-fetchBusData();
+
+const busesRef = ref(db, 'buses');
+
+onValue(busesRef, snapshot => {
+  const data = snapshot.val();
+  if (!data) return;
+  Object.entries(data).forEach(([busId, busInfo]) => {
+    const position = {
+      lat: busInfo.lat,
+      lng: busInfo.lng
+    };
+    updateMap(busId, position);
+  });
+});
