@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Login</title>
+  <title>Login - Track My Ride</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="auth-page">
@@ -10,10 +10,12 @@
     <h1>Login</h1>
     <input type="email" id="loginEmail" placeholder="Email">
     <input type="password" id="loginPassword" placeholder="Password">
-    <button onclick="loginUser()">Login</button>
-    <button onclick="googleLogin()">Sign in with Google</button>
-    <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+    <button onclick="login()">Login</button>
+    <button onclick="loginWithGoogle()">Login with Google</button>
+    <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
   </div>
+
+  <script type="module" src="firebase.js"></script>
   <script type="module" src="script.js"></script>
 </body>
 </html>
