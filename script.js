@@ -1,12 +1,15 @@
 import {
   auth,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  provider
 } from './firebase.js';
 
-// Wait for DOM to be ready
 document.addEventListener('DOMContentLoaded', () => {
   const loginBtn = document.getElementById('login-btn');
-  
+  const googleBtn = document.getElementById('google-btn');
+
+  // Email & Password Login
   if (loginBtn) {
     loginBtn.addEventListener('click', (e) => {
       e.preventDefault();
@@ -22,11 +25,28 @@ document.addEventListener('DOMContentLoaded', () => {
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           console.log("✅ Login successful:", userCredential.user);
-          window.location.href = "dashboard.html"; // Redirect to dashboard
+          window.location.href = "dashboard.html";
         })
         .catch((error) => {
           console.error("❌ Login failed:", error.message);
           alert("Login failed: " + error.message);
+        });
+    });
+  }
+
+  // Google Sign-In
+  if (googleBtn) {
+    googleBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          console.log("✅ Google Sign-In successful:", result.user);
+          window.location.href = "dashboard.html";
+        })
+        .catch((error) => {
+          console.error("❌ Google Sign-In failed:", error.message);
+          alert("Google Sign-In failed: " + error.message);
         });
     });
   }
