@@ -16,17 +16,18 @@ import {
   onValue
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-// Replace these with your actual Firebase project configuration
+// ✅ Your Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyATTUPboq4w0nwxubk5e5tL9ujOiSx03aU",
   authDomain: "trackmyride-5524a.firebaseapp.com",
   projectId: "trackmyride-5524a",
-  storageBucket: "trackmyride-5524a.firebasestorage.app",
+  storageBucket: "trackmyride-5524a.appspot.com",
   messagingSenderId: "275723082314",
   appId: "1:275723082314:web:54b9c80fecba4e414b24b3",
-  measurementId: "G-9P4N8QVMTE"
+  databaseURL: "https://trackmyride-5524a-default-rtdb.firebaseio.com"
 };
 
+// ✅ Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getDatabase(app);
