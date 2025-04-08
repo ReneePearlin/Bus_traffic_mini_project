@@ -6,7 +6,8 @@ import {
   signInWithPopup,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  signOut
+  signOut,
+  onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
 import {
@@ -15,32 +16,31 @@ import {
   onValue
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-// ✅ Replace with your actual config values
+// Replace these with your actual Firebase project configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyATTUPboq4w0nwxubk5e5tL9ujOiSx03aU",
-  authDomain: "trackmyride-5524a.firebaseapp.com",
-  projectId: "trackmyride-5524a",
-  storageBucket: "trackmyride-5524a.firebasestorage.app",
-  messagingSenderId: "275723082314",
-  appId: "1:275723082314:web:54b9c80fecba4e414b24b3",
-  measurementId: "G-9P4N8QVMTE"
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+  databaseURL: "YOUR_DATABASE_URL",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_STORAGE_BUCKET",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
 const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
 const db = getDatabase(app);
+const provider = new GoogleAuthProvider();
 
 export {
   auth,
   provider,
   db,
-  signInWithEmailAndPassword,
   signInWithPopup,
+  signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signOut,
+  onAuthStateChanged,
   ref,
   onValue
 };
