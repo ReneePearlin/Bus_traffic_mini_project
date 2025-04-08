@@ -1,56 +1,33 @@
-// script.js
 import {
   auth,
-  provider,
-  signInWithPopup,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword
+  signInWithEmailAndPassword
 } from './firebase.js';
 
-// Login
+// Wait for DOM to be ready
 document.addEventListener('DOMContentLoaded', () => {
-  const loginForm = document.getElementById('login-form');
-  const googleBtn = document.getElementById('google-btn');
-
-  if (loginForm) {
-    loginForm.addEventListener('submit', async (e) => {
+  const loginBtn = document.getElementById('login-btn');
+  
+  if (loginBtn) {
+    loginBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
 
-      try {
-        await signInWithEmailAndPassword(auth, email, password);
-        window.location.href = 'dashboard.html';
-      } catch (error) {
-        alert('Login error: ' + error.message);
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      if (!email || !password) {
+        alert("Please enter both email and password.");
+        return;
       }
-    });
-  }
 
-  if (googleBtn) {
-    googleBtn.addEventListener('click', async () => {
-      try {
-        await signInWithPopup(auth, provider);
-        window.location.href = 'dashboard.html';
-      } catch (error) {
-        alert('Google login failed: ' + error.message);
-      }
-    });
-  }
-
-  const signupForm = document.getElementById('signup-form');
-  if (signupForm) {
-    signupForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const email = document.getElementById('signup-email').value;
-      const password = document.getElementById('signup-password').value;
-
-      try {
-        await createUserWithEmailAndPassword(auth, email, password);
-        window.location.href = 'dashboard.html';
-      } catch (error) {
-        alert('Signup error: ' + error.message);
-      }
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          console.log("✅ Login successful:", userCredential.user);
+          window.location.href = "dashboard.html"; // Redirect to dashboard
+        })
+        .catch((error) => {
+          console.error("❌ Login failed:", error.message);
+          alert("Login failed: " + error.message);
+        });
     });
   }
 });
