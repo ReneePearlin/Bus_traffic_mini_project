@@ -1,7 +1,26 @@
+<!-- logout.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="refresh" content="0; URL=index.html" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logging out...</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body></body>
+<body>
+  <div class="login-container">
+    <h2>Logging out...</h2>
+    <p>Please wait while we sign you out.</p>
+  </div>
+  <script type="module">
+    import { auth, signOut } from './firebase.js';
+
+    signOut(auth).then(() => {
+      window.location.href = 'index.html';
+    }).catch((error) => {
+      alert('Logout failed: ' + error.message);
+      window.location.href = 'dashboard.html';
+    });
+  </script>
+</body>
 </html>
