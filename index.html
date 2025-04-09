@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Login - Track My Ride</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Tracker</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="auth-page">
-  <div class="auth-container">
-    <h1>Login</h1>
-    <input type="email" id="loginEmail" placeholder="Email">
-    <input type="password" id="loginPassword" placeholder="Password">
-    <button onclick="login()">Login</button>
-    <button onclick="loginWithGoogle()">Login with Google</button>
-    <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+<body>
+  <div class="container" id="main-menu">
+    <h1>Smart Tracker</h1>
+    <button onclick="signInWithGoogle()">Sign in with Google</button>
   </div>
 
-  <script type="module" src="firebase.js"></script>
-  <script type="module" src="script.js"></script>
-  <script type="module" src="firebase.js"></script>
+  <div class="container hidden" id="options-menu">
+    <button onclick="showLiveRoutes()">Live Routes</button>
+    <button onclick="showPastRoutes()">Past Routes</button>
+    <button onclick="enableGeofencing()">Geofencing</button>
+    <button onclick="showNotification('Notification example')">Send Notification</button>
+    <button onclick="goBack()">Back</button>
+  </div>
 
-<!-- Link your login logic (or signup logic) -->
-<script type="module" src="script.js"></script> <!-- use signup.js if it's for signup -->
+  <div class="container hidden" id="content-display">
+    <button onclick="goBackToOptions()">← Back</button>
+    <div id="content"></div>
+  </div>
+
+  <script src="firebase-config.js"></script>
+  <script src="script.js"></script>
+  <script src="geofencing.js"></script>
 </body>
 </html>
