@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Notifications</title>
+  <link rel="stylesheet" href="notifications.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1>Notifications</h1>
+    <ul id="notifications-list">
+      <!-- Notifications will be added here -->
+    </ul>
+  </div>
+
+  <script>
+    const notifications = [
+      "🚌 Bus 12A has reached Stop 3",
+      "⏱️ Bus 18B is running 10 minutes late",
+      "✅ Bus 9C completed its morning route",
+      "📍 Live location updated for Bus 14D",
+      "🚧 Traffic alert on route 5E",
+    ];
+
+    const list = document.getElementById("notifications-list");
+    notifications.forEach(note => {
+      const li = document.createElement("li");
+      li.textContent = note;
+      list.appendChild(li);
+    });
+  </script>
+</body>
+</html>
