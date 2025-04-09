@@ -18,12 +18,32 @@
   </div>
 
   <div class="main-content">
-    <div id="map"></div>
+    <div id="map" style="width: 100%; height: 100vh;"></div>
     <div id="infoPanel"></div>
   </div>
 
   <script type="module" src="firebase.js"></script>
   <script type="module" src="tracking.js"></script>
   <script type="module" src="map.js"></script>
+
+  <script>
+    function showLive() {
+      window.location.href = "location.html";
+    }
+
+    function showHistory() {
+      window.location.href = "past-routes.html";
+    }
+
+    function showNotifications() {
+      window.location.href = "notifications.html";
+    }
+
+    function logout() {
+      // Optional: Clear auth or session data
+      // localStorage.clear(); or firebase.auth().signOut() if using Firebase Auth
+      window.location.href = "login.html"; // Redirect to sign-in or main page
+    }
+  </script>
 </body>
 </html>
