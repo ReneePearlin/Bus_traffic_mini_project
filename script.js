@@ -1,35 +1,43 @@
-import {
-  auth,
-  provider,
-  signInWithPopup,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  signOut
-} from './firebase.js';
+function signInWithGoogle() {
+  firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
+    .then(result => {
+      alert(`Welcome, ${result.user.displayName}`);
+      document.getElementById('main-menu').classList.add('hidden');
+      document.getElementById('options-menu').classList.remove('hidden');
+    })
+    .catch(error => {
+      alert('Sign-in error: ' + error.message);
+    });
+}
 
-// Email login
-window.login = function () {
-  const email = document.getElementById('loginEmail').value;
-  const password = document.getElementById('loginPassword').value;
+function showLiveRoutes() {
+  document.getElementById('options-menu').classList.add('hidden');
+  document.getElementById('content-display').classList.remove('hidden');
+  document.getElementById('content').innerHTML = '<p>Live tracking in progress...</p>';
+  // Simulate tracking
+}
 
-  signInWithEmailAndPassword(auth, email, password)
-    .then(() => window.location.href = 'dashboard.html')
-    .catch(err => alert("Login error: " + err.message));
-};
+function showPastRoutes() {
+  document.getElementById('options-menu').classList.add('hidden');
+  document.getElementById('content-display').classList.remove('hidden');
+  document.getElementById('content').innerHTML = '<p>Past route history will appear here.</p>';
+}
 
-// Google login
-window.loginWithGoogle = function () {
-  signInWithPopup(auth, provider)
-    .then(() => window.location.href = 'dashboard.html')
-    .catch(err => alert("Google login failed: " + err.message));
-};
+function enableGeofencing() {
+  startGeofencing();
+  showNotification("Geofencing activated.");
+}
 
-// Signup
-window.signUp = function () {
-  const email = document.getElementById('signupEmail').value;
-  const password = document.getElementById('signupPassword').value;
+function showNotification(msg) {
+  alert(msg);
+}
 
-  createUserWithEmailAndPassword(auth, email, password)
-    .then(() => window.location.href = 'dashboard.html')
-    .catch(err => alert("Signup error: " + err.message));
-};
+function goBack() {
+  document.getElementById('options-menu').classList.add('hidden');
+  document.getElementById('main-menu').classList.remove('hidden');
+}
+
+function goBackToOptions() {
+  document.getElementById('content-display').classList.add('hidden');
+  document.getElementById('options-menu').classList.remove('hidden');
+}
