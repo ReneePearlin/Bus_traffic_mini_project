@@ -1,43 +1,53 @@
-function signInWithGoogle() {
-  firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
+function handleGoogleAuth() {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  auth.signInWithPopup(provider)
     .then(result => {
-      alert(`Welcome, ${result.user.displayName}`);
-      document.getElementById('main-menu').classList.add('hidden');
-      document.getElementById('options-menu').classList.remove('hidden');
+      const user = result.user;
+      const isNewUser = result.additionalUserInfo.isNewUser;
+      const message = isNewUser ? `Welcome, ${user.displayName}! Thanks for signing up.` : `Welcome back, ${user.displayName}!`;
+
+      document.getElementById("auth-screen").classList.add("hidden");
+      document.getElementById("menu-screen").classList.remove("hidden");
+      document.getElementById("welcome-message").innerText = message;
     })
     .catch(error => {
-      alert('Sign-in error: ' + error.message);
+      console.error("Auth error:", error.message);
+      alert("Authentication failed. Try again.");
     });
 }
 
 function showLiveRoutes() {
-  document.getElementById('options-menu').classList.add('hidden');
-  document.getElementById('content-display').classList.remove('hidden');
-  document.getElementById('content').innerHTML = '<p>Live tracking in progress...</p>';
-  // Simulate tracking
+  switchToContent("<h3>Live route tracking started...</h3>");
 }
 
 function showPastRoutes() {
-  document.getElementById('options-menu').classList.add('hidden');
-  document.getElementById('content-display').classList.remove('hidden');
-  document.getElementById('content').innerHTML = '<p>Past route history will appear here.</p>';
+  switchToContent("<h3>Here are your past routes...</h3><ul><li>Route A</li><li>Route B</li></ul>");
 }
 
 function enableGeofencing() {
   startGeofencing();
-  showNotification("Geofencing activated.");
+  showNotification("Geofencing enabled.");
 }
 
 function showNotification(msg) {
   alert(msg);
 }
 
-function goBack() {
-  document.getElementById('options-menu').classList.add('hidden');
-  document.getElementById('main-menu').classList.remove('hidden');
+function goBackToMenu() {
+  document.getElementById("content-screen").classList.add("hidden");
+  document.getElementById("menu-screen").classList.remove("hidden");
 }
 
-function goBackToOptions() {
-  document.getElementById('content-display').classList.add('hidden');
-  document.getElementById('options-menu').classList.remove('hidden');
+function switchToContent(htmlContent) {
+  document.getElementById("menu-screen").classList.add("hidden");
+  document.getElementById("content-screen").classList.remove("hidden");
+  document.getElementById("content-area").innerHTML = htmlContent;
+}
+
+function logout() {
+  auth.signOut().then(() => {
+    document.getElementById("menu-screen").classList.add("hidden");
+    document.getElementById("auth-screen").classList.remove("hidden");
+    alert("Logged out.");
+  });
 }
