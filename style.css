@@ -1,120 +1,48 @@
-/* Universal */
 body, html {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
   height: 100%;
-  background: linear-gradient(to right, #74ebd5, #acb6e5);
+  background: linear-gradient(-45deg, #4158D0, #C850C0, #FFCC70, #32CD32);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Login & Signup Pages */
-.auth-container {
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.container {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+  gap: 1rem;
 }
 
-.auth-box {
-  background-color: white;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  width: 320px;
-}
-
-.auth-box h2 {
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.auth-box input {
-  width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-}
-
-.auth-box button {
-  padding: 12px;
-  width: 100%;
-  margin-top: 15px;
-  background-color: #007bff;
-  color: white;
+button {
+  padding: 10px 15px;
   border: none;
-  border-radius: 8px;
-  cursor: pointer;
+  background: #4285F4;
+  color: white;
   font-size: 16px;
-}
-
-.auth-box button:hover {
-  background-color: #0056b3;
-}
-
-.google-btn {
-  background-color: #db4437;
-}
-
-.google-btn:hover {
-  background-color: #c1351d;
-}
-
-/* Dashboard */
-.dashboard-page {
-  display: flex;
-  height: 100vh;
-}
-
-.sidebar {
-  width: 250px;
-  background-color: #2c3e50;
-  color: white;
-  padding: 20px;
-}
-
-.sidebar h2 {
-  margin-bottom: 30px;
-}
-
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-}
-
-.sidebar li, .sidebar button {
-  padding: 10px;
-  margin: 10px 0;
-  background-color: #34495e;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  text-align: left;
-  color: white;
-}
-
-.sidebar li:hover, .sidebar button:hover {
-  background-color: #1abc9c;
-}
-
-.main-content {
-  flex: 1;
-  position: relative;
-}
-
-#map {
-  height: 100%;
-  width: 100%;
-}
-
-#infoPanel {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: white;
-  padding: 15px;
   border-radius: 8px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #3367D6;
+}
+
+.hidden {
+  display: none;
 }
