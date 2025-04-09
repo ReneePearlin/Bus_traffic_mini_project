@@ -1,47 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Smart Tracker</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Test Auth</title>
 </head>
 <body>
-  <!-- Auth Section -->
-  <div class="container" id="auth-screen">
-    <h1>Smart Tracker</h1>
-    
-    <input type="email" id="email" placeholder="Email" />
-    <input type="password" id="password" placeholder="Password" />
-    
-    <button onclick="login()">Login</button>
-    <button onclick="signUp()">Sign Up</button>
-    <button onclick="googleSignIn()">Sign in with Google</button>
-  </div>
+  <h1>Login System</h1>
+  <input type="email" id="email" placeholder="Email">
+  <input type="password" id="password" placeholder="Password"><br><br>
 
-  <!-- Menu Screen -->
-  <div class="container hidden" id="menu-screen">
-    <h2 id="welcome-message"></h2>
-    <button onclick="showLiveRoutes()">Live Routes</button>
-    <button onclick="showPastRoutes()">Past Routes</button>
-    <button onclick="enableGeofencing()">Enable Geofencing</button>
-    <button onclick="showNotification('This is a sample notification!')">Show Notification</button>
-    <button onclick="logout()">Log Out</button>
-  </div>
+  <button onclick="login()">Login</button>
+  <button onclick="signUp()">Sign Up</button>
+  <button onclick="googleSignIn()">Sign in with Google</button>
 
-  <!-- Content Screen -->
-  <div class="container hidden" id="content-screen">
-    <button onclick="goBackToMenu()">← Back</button>
-    <div id="content-area"></div>
-  </div>
-
-  <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
-
-  <!-- Scripts -->
   <script src="firebase-config.js"></script>
-  <script src="geofencing.js"></script>
-  <script src="script.js"></script>
+  <script>
+    function login() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      auth.signInWithEmailAndPassword(email, password)
+        .then(user => alert("Login success"))
+        .catch(err => alert("Login failed: " + err.message));
+    }
+
+    function signUp() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      auth.createUserWithEmailAndPassword(email, password)
+        .then(user => alert("Sign up success"))
+        .catch(err => alert("Sign up failed: " + err.message));
+    }
+
+    function googleSignIn() {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      auth.signInWithPopup(provider)
+        .then(result => alert("Google Sign-In success"))
+        .catch(err => alert("Google Sign-In failed: " + err.message));
+    }
+  </script>
 </body>
 </html>
