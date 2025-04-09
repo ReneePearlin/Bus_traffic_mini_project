@@ -2,43 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Test Auth</title>
+  <title>Firebase Auth Test</title>
 </head>
 <body>
-  <h1>Login System</h1>
-  <input type="email" id="email" placeholder="Email">
+  <h1>Firebase Auth</h1>
+  <input type="email" id="email" placeholder="Email"><br>
   <input type="password" id="password" placeholder="Password"><br><br>
 
   <button onclick="login()">Login</button>
   <button onclick="signUp()">Sign Up</button>
   <button onclick="googleSignIn()">Sign in with Google</button>
 
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+  <!-- Firebase v8 CDN -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+  <!-- Config + Logic -->
   <script src="firebase-config.js"></script>
-  <script>
-    function login() {
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      auth.signInWithEmailAndPassword(email, password)
-        .then(user => alert("Login success"))
-        .catch(err => alert("Login failed: " + err.message));
-    }
-
-    function signUp() {
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      auth.createUserWithEmailAndPassword(email, password)
-        .then(user => alert("Sign up success"))
-        .catch(err => alert("Sign up failed: " + err.message));
-    }
-
-    function googleSignIn() {
-      const provider = new firebase.auth.GoogleAuthProvider();
-      auth.signInWithPopup(provider)
-        .then(result => alert("Google Sign-In success"))
-        .catch(err => alert("Google Sign-In failed: " + err.message));
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
