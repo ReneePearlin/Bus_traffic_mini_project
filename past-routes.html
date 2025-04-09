@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Past Bus Routes</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+  <style>
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script>
+    function initMap() {
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 13,
+        center: { lat: 13.0827, lng: 80.2707 }, // Chennai center
+      });
+
+      // Simulated past route coordinates (Chennai area)
+      const pastRouteCoords = [
+        { lat: 13.0827, lng: 80.2707 },
+        { lat: 13.0835, lng: 80.2750 },
+        { lat: 13.0850, lng: 80.2800 },
+        { lat: 13.0862, lng: 80.2870 },
+        { lat: 13.0880, lng: 80.2950 },
+        { lat: 13.0900, lng: 80.3050 },
+        { lat: 13.0920, lng: 80.3100 },
+      ];
+
+      const routePath = new google.maps.Polyline({
+        path: pastRouteCoords,
+        geodesic: true,
+        strokeColor: "#FF0000",
+        strokeOpacity: 0.9,
+        strokeWeight: 4,
+      });
+
+      routePath.setMap(map);
+
+      // Optional: Add markers at start & end
+      new google.maps.Marker({
+        position: pastRouteCoords[0],
+        map,
+        label: "Start",
+        title: "Route Start",
+      });
+
+      new google.maps.Marker({
+        position: pastRouteCoords[pastRouteCoords.length - 1],
+        map,
+        label: "End",
+        title: "Route End",
+      });
+    }
+  </script>
+
+  <!-- Replace with your actual Google Maps API Key -->
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+  </script>
+</body>
+</html>
