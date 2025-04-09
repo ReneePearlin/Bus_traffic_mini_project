@@ -7,26 +7,35 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container" id="main-menu">
+  <!-- Login/Sign-up screen -->
+  <div class="container" id="auth-screen">
     <h1>Smart Tracker</h1>
-    <button onclick="signInWithGoogle()">Sign in with Google</button>
+    <button onclick="handleGoogleAuth()">Login / Sign Up with Google</button>
   </div>
 
-  <div class="container hidden" id="options-menu">
+  <!-- Options menu after auth -->
+  <div class="container hidden" id="menu-screen">
+    <h2 id="welcome-message"></h2>
     <button onclick="showLiveRoutes()">Live Routes</button>
     <button onclick="showPastRoutes()">Past Routes</button>
-    <button onclick="enableGeofencing()">Geofencing</button>
-    <button onclick="showNotification('Notification example')">Send Notification</button>
-    <button onclick="goBack()">Back</button>
+    <button onclick="enableGeofencing()">Enable Geofencing</button>
+    <button onclick="showNotification('Here is a notification!')">Show Notification</button>
+    <button onclick="logout()">Log Out</button>
   </div>
 
-  <div class="container hidden" id="content-display">
-    <button onclick="goBackToOptions()">← Back</button>
-    <div id="content"></div>
+  <!-- Content display screen -->
+  <div class="container hidden" id="content-screen">
+    <button onclick="goBackToMenu()">← Back</button>
+    <div id="content-area"></div>
   </div>
 
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+
+  <!-- Custom Scripts -->
   <script src="firebase-config.js"></script>
-  <script src="script.js"></script>
   <script src="geofencing.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
