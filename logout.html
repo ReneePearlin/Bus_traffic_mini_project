@@ -1,6 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logging Out</title>
+  <link rel="stylesheet" href="logout.css" />
+  <script>
+    window.onload = function () {
+      // Clear localStorage/sessionStorage
+      localStorage.clear(); 
+      sessionStorage.clear();
+
+      // Optional: Simulate short delay before redirect
+      setTimeout(function () {
+        // Redirect to main page (adjust filename if needed)
+        window.location.href = "index.html";
+      }, 1000); // 1 second delay
+    };
+  </script>
+</head>
+<body>
+  <div class="logout-container">
+    <h1>Logging you out...</h1>
+    <p>Please wait while we redirect you to the main page.</p>
+  </div>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="UTF-8">
   <meta http-equiv="refresh" content="0;url=index.html">
   <title>Logging Out...</title>
