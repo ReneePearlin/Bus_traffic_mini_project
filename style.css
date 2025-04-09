@@ -1,56 +1,51 @@
-body, html {
+body {
   margin: 0;
-  padding: 0;
   font-family: 'Segoe UI', sans-serif;
-  height: 100%;
-  background: linear-gradient(-45deg, #4158D0, #C850C0, #FFCC70, #32CD32);
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  color: white;
 }
 
 .container {
-  background: white;
+  background: rgba(255, 255, 255, 0.1);
   padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: 320px;
+  width: 300px;
 }
 
 input {
-  padding: 10px;
+  width: 100%;
+  padding: 0.6rem;
+  margin: 0.5rem 0;
+  border: none;
   border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 14px;
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 1rem;
 }
 
 button {
-  padding: 10px 15px;
+  padding: 0.7rem;
   border: none;
-  background: #4285F4;
-  color: white;
-  font-size: 16px;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  background-color: #ffffffcc;
+  color: #333;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
 button:hover {
-  background: #3367D6;
-}
-
-.hidden {
-  display: none;
+  background-color: #fff;
+  transform: translateY(-2px);
 }
